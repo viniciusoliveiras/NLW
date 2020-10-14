@@ -9,8 +9,8 @@
 const map = L.map('mapid').setView([-22.8725251,-43.2792252], 15);
 
 //create and add tileLayer
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-).addTo(map);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+.addTo(map);
 
 //create icon
 const icon = L.icon({
