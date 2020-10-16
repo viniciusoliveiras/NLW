@@ -1,18 +1,24 @@
 //   importando dependência 
 const express = require('express');
-const path = require('path')
+const path = require('path');
+const pages = require('./pages.js')
 
 //  iniciando o express
 const server = express()
 
 server
-//  utilizando os arquivos estátticos
-.use(express.static('public'))
+    //  utilizando os arquivos estáticos
+    .use(express.static('public'))
 
-//  criando rota
-.get('/', (req, res) => {
-    return res.sendFile(path.join(__dirname, 'views', 'index.html'))
-})
+    //  configurando template engine (arquivos dinâmicos)
+    .set('views', path.join(__dirname, "views"))
+    .set('view engine', 'hbs')
+
+    //  criando rotas da aplicação
+    .get('/', pages.index)
+    .get('/orphanage', pages.orphanage)
+    .get('/orphanages', pages.orphanages)
+    .get('/create-orphanage', pages.createOrphanage)
 
 //  ligando o servidor
 server.listen(5500)
